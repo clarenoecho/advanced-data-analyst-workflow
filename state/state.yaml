@@ -1,0 +1,212 @@
+# ============================================================================
+# state.yaml : SUMBER KEBENARAN PROGRES (Dapur Data: Advanced Data Analyst)
+# ============================================================================
+# Aturan:
+#  - File ini hanya diubah lewat tools/progress.py (atau oleh Tasya secara sadar).
+#  - Mentor AI TIDAK PERNAH mengubah file ini. Mentor hanya mengusulkan
+#    Evidence Entry (lihat system/03_rubrik_validasi.md bagian 7).
+#  - Jika ingatan mentor berbeda dengan file ini, yang berlaku adalah file ini.
+#  - Urutan modul dalam daftar = urutan roadmap (system/02_roadmap.md).
+#
+# Nilai status yang sah:
+#   belum      : belum dimulai (terkunci bila bukan resep aktif)
+#   aktif      : resep (quest) yang sedang dikerjakan; hanya boleh satu
+#   learned    : materi dipelajari, belum lulus ujian
+#   validated  : lulus ujian validasi, bukti lengkap
+#   retained   : lulus retrieval review setelah jeda >= 7 hari
+#   mastered   : terbukti dipakai mandiri di >= 2 konteks
+#
+# Modul yang punya daftar `quest` tidak menyimpan status sendiri; statusnya
+# diturunkan dari quest-nya. Tipe: materi (default) | portfolio | capstone.
+# Modul `opsional: true` tidak menghalangi portfolio dan boleh dilewati.
+# Portfolio sebuah fase terbuka bila semua modul non-opsional di fase itu selesai.
+#
+# Bidang opsional per item: tanggal_validasi, evidence (daftar id di
+# state/evidence/), review_berikutnya (YYYY-MM-DD), perlu_review (true/false),
+# catatan.
+# ============================================================================
+
+versi_skema: 1
+diperbarui: 2026-10-30
+pemain: Tasya
+target: Advanced Data Analyst
+posisi_saat_ini: {fase: 0, modul: py_setup, quest: null}
+quest_berikutnya: py_dasar
+kemenangan_terbaru: null
+fase:
+- id: 0
+  nama: PYTHON DASAR
+  ringkasan: Setup • Sintaks • Struktur Data • Fungsi • File • Git
+  modul:
+  - {id: py_setup, nama: 'Setup: Python, VS Code & Jupyter', status: aktif}
+  - {id: py_dasar, nama: 'Variabel, Tipe Data & Operator', status: belum}
+  - {id: py_kontrol, nama: Percabangan & Perulangan, status: belum}
+  - {id: py_struktur_data, nama: 'List, Tuple, Dictionary & Set', status: belum}
+  - {id: py_fungsi_modul, nama: Fungsi & Modul, status: belum}
+  - {id: py_error_file, nama: Error Handling & File I/O, status: belum}
+  - {id: py_venv_git, nama: 'Virtual Environment, pip, Git & GitHub', status: belum}
+  - {id: py_oop, nama: OOP Dasar, status: belum, opsional: true}
+  - {id: porto_0, nama: 'Mini Project: Buku Resep Digital (CLI)', tipe: portfolio, status: belum}
+- id: 1
+  nama: PANDAS & VISUALISASI DASAR
+  ringkasan: NumPy • Pandas • Matplotlib • Seaborn • Laporan EDA
+  modul:
+  - {id: numpy_esensial, nama: NumPy Esensial, status: belum}
+  - id: pandas
+    nama: Pandas
+    quest:
+    - {id: pd_dasar_io, nama: 'Series, DataFrame & Membaca Data', status: belum}
+    - {id: pd_seleksi_filter, nama: Seleksi & Filtering, status: belum}
+    - {id: pd_cleaning, nama: Data Cleaning Dasar, status: belum}
+    - {id: pd_groupby_agg, nama: GroupBy & Agregasi, status: belum}
+    - {id: pd_gabung_reshape, nama: 'Merge, Concat & Reshape', status: belum}
+  - id: visualisasi
+    nama: Visualisasi Dasar
+    quest:
+    - {id: mpl_dasar, nama: 'Matplotlib: Grafik Dasar', status: belum}
+    - {id: mpl_figure_axes, nama: 'Matplotlib: Figure, Axes & Styling', status: belum}
+    - {id: sns_distribusi_kategori, nama: 'Seaborn: Distribusi & Kategori', status: belum}
+    - {id: sns_relasi_matrix, nama: 'Seaborn: Relasi, Heatmap & Pairplot', status: belum}
+  - {id: porto_1, nama: 'Portfolio #1: Laporan EDA', tipe: portfolio, status: belum}
+- id: 2
+  nama: ADVANCED SQL & DATA MODELING
+  ringkasan: SQL • Window Function • CTE • PostgreSQL • BigQuery • Star Schema
+  modul:
+  - id: sql_fondasi
+    nama: Fondasi SQL
+    quest:
+    - {id: sql_select_filter, nama: 'SELECT, WHERE & ORDER BY', status: belum}
+    - {id: sql_agregasi, nama: 'GROUP BY, HAVING & CASE WHEN', status: belum}
+    - {id: sql_join, nama: JOIN & UNION, status: belum}
+    - {id: sql_subquery_cte, nama: Subquery & CTE, status: belum}
+  - id: sql_lanjut
+    nama: SQL Lanjut
+    quest:
+    - {id: sql_window_ranking, nama: 'Window Function: Ranking', status: belum}
+    - {id: sql_window_analitik, nama: 'Window Function: Running Total, LAG & LEAD', status: belum}
+    - {id: sql_tanggal_teks_null, nama: 'Fungsi Tanggal, Teks & NULL', status: belum}
+    - {id: sql_optimasi, nama: 'Optimasi Query: Index & EXPLAIN', status: belum}
+  - id: sql_platform
+    nama: Platform Database
+    quest:
+    - {id: sql_postgresql, nama: PostgreSQL & Koneksi dari Python, status: belum}
+    - {id: sql_bigquery, nama: BigQuery Sandbox, status: belum}
+  - id: data_modeling
+    nama: Data Modeling
+    quest:
+    - {id: dm_relasional_erd, nama: 'Model Relasional, Normalisasi & ERD', status: belum}
+    - {id: dm_star_schema, nama: 'Star Schema: Fact & Dimension', status: belum}
+  - {id: porto_2, nama: 'Portfolio #2: Studi Kasus SQL', tipe: portfolio, status: belum}
+- id: 3
+  nama: DATA WRANGLING & OTOMASI
+  ringkasan: Pandas Lanjut • Data Quality • ETL • dbt • Otomasi Laporan
+  modul:
+  - id: wrangling_lanjut
+    nama: Pandas Lanjut
+    quest:
+    - {id: wr_method_chaining, nama: Method Chaining & Fungsi Kustom, status: belum}
+    - {id: wr_datetime, nama: Datetime & Time Series, status: belum}
+    - {id: wr_teks_kategori, nama: Teks & Kategori, status: belum}
+    - {id: wr_performa, nama: 'Performa, Memori & Parquet', status: belum}
+  - id: data_quality
+    nama: Data Quality
+    quest:
+    - {id: dq_profiling_validasi, nama: Profiling & Aturan Validasi, status: belum}
+    - {id: dq_cleaning_lanjut, nama: 'Outlier, Duplikat & Standardisasi', status: belum}
+  - id: etl
+    nama: ETL & Analytics Engineering
+    quest:
+    - {id: etl_api, nama: Mengambil Data dari API, status: belum}
+    - {id: etl_pipeline, nama: Pipeline ETL dengan Python, status: belum}
+    - {id: etl_dbt, nama: Dasar dbt, status: belum}
+  - id: otomasi
+    nama: Otomasi
+    quest:
+    - {id: oto_script_jadwal, nama: Script & Penjadwalan, status: belum}
+    - {id: oto_laporan_excel, nama: Laporan Excel Otomatis, status: belum}
+  - {id: porto_3, nama: 'Portfolio #3: Pipeline Data End-to-End', tipe: portfolio, status: belum}
+- id: 4
+  nama: STATISTIK UNTUK ANALIS
+  ringkasan: Deskriptif • Inferensi • Uji Hipotesis • A/B Testing • Regresi
+  modul:
+  - id: statistik_dasar
+    nama: Statistik Dasar
+    quest:
+    - {id: stat_deskriptif, nama: Statistik Deskriptif, status: belum}
+    - {id: stat_probabilitas, nama: Probabilitas & Distribusi, status: belum}
+    - {id: stat_inferensi, nama: Sampling & Confidence Interval, status: belum}
+  - id: uji_hipotesis
+    nama: Uji Hipotesis
+    quest:
+    - {id: uh_konsep, nama: 'Konsep Uji Hipotesis & p-value', status: belum}
+    - {id: uh_uji_umum, nama: 'T-test, Chi-square & ANOVA', status: belum}
+  - id: ab_testing
+    nama: A/B Testing
+    quest:
+    - {id: ab_desain, nama: 'Desain Eksperimen & Sample Size', status: belum}
+    - {id: ab_analisis, nama: 'Analisis & Jebakan A/B Test', status: belum}
+  - id: regresi
+    nama: Regresi
+    quest:
+    - {id: reg_linier, nama: Regresi Linier, status: belum}
+    - {id: reg_logistik, nama: Regresi Logistik, status: belum}
+  - {id: kausalitas, nama: Korelasi vs Kausalitas, status: belum}
+  - {id: porto_4, nama: 'Portfolio #4: Analisis A/B Test', tipe: portfolio, status: belum}
+- id: 5
+  nama: BUSINESS & PRODUCT ANALYTICS
+  ringkasan: KPI • Funnel • Cohort • Segmentasi • CLV • Forecasting
+  modul:
+  - id: ba_fondasi
+    nama: Fondasi Business Analytics
+    quest:
+    - {id: ba_framing, nama: Merumuskan Masalah Bisnis, status: belum}
+    - {id: ba_metrik_kpi, nama: Metrik & KPI, status: belum}
+  - id: ba_pelanggan
+    nama: Analitik Pelanggan
+    quest:
+    - {id: ba_funnel, nama: Analisis Funnel, status: belum}
+    - {id: ba_cohort_retensi, nama: 'Cohort, Retensi & Churn', status: belum}
+    - {id: ba_segmentasi, nama: 'Segmentasi: RFM & K-Means', status: belum}
+    - {id: ba_clv, nama: 'CLV & Unit Economics', status: belum}
+  - {id: ba_forecasting, nama: Forecasting Dasar, status: belum}
+  - {id: porto_5, nama: 'Portfolio #5: Studi Kasus E-commerce', tipe: portfolio, status: belum}
+- id: 6
+  nama: BI & DATA STORYTELLING
+  ringkasan: Excel Lanjut • Power BI • DAX • Desain Dashboard • Storytelling
+  modul:
+  - id: excel_lanjut
+    nama: Excel Lanjut
+    quest:
+    - {id: xl_formula, nama: 'Formula Lanjut & Dynamic Array', status: belum}
+    - {id: xl_pivot_powerquery, nama: PivotTable & Power Query, status: belum}
+  - id: powerbi
+    nama: Power BI
+    quest:
+    - {id: pbi_powerquery_model, nama: 'Power Query & Data Model', status: belum}
+    - {id: pbi_dax_dasar, nama: 'DAX Dasar & CALCULATE', status: belum}
+    - {id: pbi_dax_waktu, nama: 'DAX Time Intelligence & Iterator', status: belum}
+    - {id: pbi_report, nama: Report Interaktif, status: belum}
+    - {id: pbi_service, nama: 'Publish, Refresh & Keamanan', status: belum}
+  - id: storytelling
+    nama: Data Storytelling
+    quest:
+    - {id: st_desain_dashboard, nama: Prinsip Desain Dashboard, status: belum}
+    - {id: st_narasi_presentasi, nama: Narasi Insight & Presentasi, status: belum}
+  - {id: porto_6, nama: 'Portfolio #6: Dashboard Power BI', tipe: portfolio, status: belum}
+- id: 7
+  nama: AI-AUGMENTED ANALYTICS & CAPSTONE
+  ringkasan: Prompting • Verifikasi AI • Copilot • LLM untuk Teks • Capstone
+  modul:
+  - id: ai_analis
+    nama: AI untuk Analis
+    quest:
+    - {id: ai_prompting, nama: Prompting untuk SQL & Analisis, status: belum}
+    - {id: ai_verifikasi, nama: Memverifikasi Hasil AI, status: belum}
+    - {id: ai_bi_copilot, nama: AI di Excel & Power BI, status: belum}
+  - id: ai_llm
+    nama: LLM untuk Data
+    quest:
+    - {id: ai_llm_teks, nama: Analisis Teks dengan LLM API, status: belum}
+    - {id: ai_otomasi_insight, nama: Otomasi Narasi Insight, status: belum}
+    - {id: ai_etika_privasi, nama: 'Privasi, Etika & Tata Kelola Data', status: belum}
+  - {id: capstone, nama: 'Capstone: Analisis End-to-End', tipe: capstone, status: belum}

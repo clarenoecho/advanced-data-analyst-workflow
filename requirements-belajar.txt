@@ -1,0 +1,25 @@
+# Paket untuk belajar. Pasang per fase saat mentor memintanya, atau sekaligus:
+#   pip install -r requirements-belajar.txt
+# Fase 0
+ipykernel
+# Fase 1
+numpy
+pandas
+matplotlib
+seaborn
+openpyxl
+# Fase 2
+sqlalchemy
+psycopg[binary]
+python-dotenv
+# Fase 3
+requests
+pyarrow
+duckdb
+dbt-duckdb
+# Fase 4-5
+scipy
+statsmodels
+scikit-learn
+# Fase 7
+google-genai
